@@ -9,8 +9,20 @@ ls'''
     }
 
     stage('test') {
-      steps {
-        echo 'test step'
+      parallel {
+        stage('test') {
+          steps {
+            echo 'test step'
+          }
+        }
+
+        stage('testpr') {
+          steps {
+            echo 'hello'
+            sleep 10
+          }
+        }
+
       }
     }
 
